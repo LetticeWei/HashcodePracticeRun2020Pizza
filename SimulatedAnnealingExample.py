@@ -2,13 +2,12 @@
 """
 Created on Wed Feb 19 13:55:52 2020
 
-@author: Wei Lai
+@author: From Online
 """
 
 ## Generate a contour plot
 # Import some other libraries that we'll need
 # matplotlib and numpy packages must also be installed
-import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 import random

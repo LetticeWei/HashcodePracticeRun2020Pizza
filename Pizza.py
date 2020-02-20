@@ -10,31 +10,31 @@ import matplotlib.pyplot as plt
 import random
 import math
 from sklearn.preprocessing import normalize
-fileHandler=open('e_also_big.in','r')
+
+
+def f(x): # x is a np list consists of zeros and ones
+    obj=sliceMaxNum-np.dot(x,pizza_spec) #note global variables!
+    return obj
+fileHandler=open('d_quite_big.in','r')
 listOfLines=fileHandler.readlines()
 fileHandler.close()
 sliceMaxNum,numOfTypes= map(int,(listOfLines[0][:-1]).split())
 pizza_spec = np.array(list(map(int,(listOfLines[1][:-1]).split())))
-print(sliceMaxNum)
-print(numOfTypes) #len(pizza_spec)=numOfTypes
-print(pizza_spec) 
-
 #obj func
-def f(x): # x is a np list consists of zeros and ones
-    obj=sliceMaxNum-np.dot(x,pizza_spec) #note global variables!
-    return obj
+
 x_start=np.zeros(numOfTypes)
 
+x_start[189:]=1.0 #d
 
-x_start[5750:]=1.0 #e 
+#x_start[5750:]=1.0 #e 
 
 
-#no need for contour plot
+#no need for contour plotS
 #simulated annealing
 # Number of cycles
-n = 30
+n = 100
 # Number of trials per cycle
-m = 100
+m = 50
 # Number of accepted solutions
 na = 0.0
 # Probability of accepting worse solution at the start
@@ -72,7 +72,7 @@ def flip(original_value,p):
             return 1.0
         else:
             return 0.0
-flip_prob_l=norm1=sliceMaxNum/pizza_spec/np.linalg.norm(sliceMaxNum/pizza_spec)
+flip_prob_l=sliceMaxNum/pizza_spec/np.linalg.norm(sliceMaxNum/pizza_spec)
 
 for i in range(n):
     print('Cycle: ' + str(i)+ ' with Temperature: '+str(t))
@@ -117,22 +117,29 @@ for i in range(n):
     fs[i+1] = fc
     # Lower the temperature for next cycle
     t = frac * t
-
-fig = plt.figure()
+    
+'''
+plt.figure()
 plt.plot(fs,'r.-')
 plt.legend(['Objective'])
+'''
 print(min(fs))
+
 x_final=x[list(fs).index(min(list(fs)))]
 ordered_spec=[k for k in range(numOfTypes) if x_final[k]==1.0]
 
 
-with open('e_also_big_result.txt','w') as f:
+
+with open('d_quite_big_try.txt','w') as f:
     f.write("{}\n".format(len(ordered_spec)))
     for item in ordered_spec:
         f.write("{} ".format(item))
 
 
-
+'''
+for loop in range(50):
+    print(main())
+'''
 
 
 
