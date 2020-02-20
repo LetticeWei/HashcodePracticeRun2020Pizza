@@ -4,7 +4,6 @@ Created on Wed Feb 19 10:07:47 2020
 
 @author: Wei Lai
 """
-import matplotlib
 import numpy as np
 import matplotlib.pyplot as plt
 import random
